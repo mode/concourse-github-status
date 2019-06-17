@@ -20,12 +20,14 @@ Add the resource to your pipeline's ~resource_types~ (requires Concourse 0.74.0+
 
 * Source Configuration
 
-|--------------+----------+---------------------------------------------|
-| Name         | Required | Description                                 |
-|--------------+----------+---------------------------------------------|
-| repo         | Yes      | The GitHub repository in ~user/repo~ format |
-| access_token | Yes      | The access token to use with the GitHub API |
-|--------------+----------+---------------------------------------------|
+|-----------------+----------+---------+----------------------------------------------------|
+| Name            | Required | Default | Description                                        |
+|-----------------+----------+---------+----------------------------------------------------|
+| repo            | Yes      |         | The GitHub repository in ~user/repo~ format        |
+| access_token    | Yes      |         | The access token to use with the GitHub API        |
+| api_wait_limit  | No       | 900     | (s) Max time to wait for API ratelimit to reset    |
+| api_wait_buffer | No       | 60      | Min number of available API retries before waiting |
+|-----------------+----------+---------+----------------------------------------------------|
 
 * Behaviour
 

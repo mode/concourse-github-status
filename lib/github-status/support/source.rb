@@ -26,6 +26,11 @@ module GitHubStatus
       def branch
         @branch ||= source.fetch('branch') { 'master' }
       end
+
+      Contract None => Int
+      def api_wait_limit
+        @api_wait_limit ||= params.fetch 'api_wait_limit', 900 # 15min
+      end
     end
   end
 end

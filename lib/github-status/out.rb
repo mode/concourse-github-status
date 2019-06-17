@@ -16,7 +16,7 @@ module GitHubStatus
 
     Contract None => Or[Sawyer::Resource, ArrayOf[Sawyer::Resource]]
     def update!
-      if statuses.empty?
+      if statuses.empty? and github_ratelimit_ok?
         github.create_status repo, canonical_sha, state, options
       else
         statuses.map do |status|
@@ -25,7 +25,9 @@ module GitHubStatus
             target_url: target_url,
             description: status["description"] || ""
           }
-          github.create_status repo, canonical_sha, status["state"], options
+          if github_ratelimit_ok?
+            github.create_status repo, canonical_sha, status["state"], options
+          end
         end
       end
     rescue Octokit::Error => error

@@ -17,11 +17,13 @@ module GitHubStatus
 
     Contract None => Maybe[String]
     def state
-      github
-        .statuses(repo, canonical_sha)
-        .select { |status| status.context == context }
-        .map(&:state)
-        .first
+      if github_ratelimit_ok?
+        github
+          .statuses(repo, canonical_sha)
+          .select { |status| status.context == context }
+          .map(&:state)
+          .first
+      end
     end
 
     Contract None => Num

@@ -20,7 +20,7 @@ module GitHubStatus
         
         if rate_limit_remaining < api_wait_buffer
           if rate_limit_resets_in < api_wait_limit
-            STDERR.puts("Github API tries remaining (#{rate_limit_remaining}) is less than buffer (#{api_wait_buffer}). Sleeping for #{rate_limit_resets_in}s..."
+            STDERR.puts("Github API tries remaining (#{rate_limit_remaining}) is less than buffer (#{api_wait_buffer}). Sleeping for #{rate_limit_resets_in}s...")
             sleep rate_limit_resets_in
             return true
           else

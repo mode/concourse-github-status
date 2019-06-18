@@ -29,12 +29,12 @@ module GitHubStatus
 
       Contract None => Int
       def api_wait_limit
-        @api_wait_limit ||= params.fetch 'api_wait_limit', 900 # 15min
+        @api_wait_limit ||= source.fetch 'api_wait_limit', 900 # 15min
       end
 
       Contract None => Int
       def api_wait_buffer
-        @api_wait_buffer ||= params.fetch 'api_wait_buffer', 60
+        @api_wait_buffer ||= source.fetch 'api_wait_buffer', 60
       end
     end
   end

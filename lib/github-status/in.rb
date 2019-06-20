@@ -12,7 +12,7 @@ module GitHubStatus
 
     Contract None => String
     def sha
-      @sha ||= version.fetch('context@sha') { commit }.split('@').last
+      @sha ||= version.fetch('context@sha@date') { commit['sha'] }.split('@')[1]
     end
 
     Contract None => Maybe[String]

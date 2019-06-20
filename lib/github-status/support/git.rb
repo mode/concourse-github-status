@@ -23,6 +23,12 @@ module GitHubStatus
           git.revparse 'HEAD'
         end
       end
+
+      Contract None => String
+      def date
+        commit ||= git.gcommit(sha)
+        @date ||= commit.author.date.to_s
+      end
     end
   end
 end

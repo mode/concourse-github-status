@@ -2,8 +2,6 @@ require 'concourse-fuselage'
 require_relative 'core'
 require_relative 'support/github'
 
-# version: { "context@sha@date" => "concourseci@12352342345234623423a@2019-06-19 00:00:00"
-
 module GitHubStatus
   class Check < Fuselage::Check
     include Core

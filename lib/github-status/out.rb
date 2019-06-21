@@ -37,7 +37,7 @@ module GitHubStatus
 
     Contract None => HashOf[String, String]
     def version
-      { 'context@sha' => "#{context}@#{canonical_sha}" }
+      { 'context@sha@date' => "#{context}@#{canonical_sha}@#{date}" }
     end
 
     Contract None => String
